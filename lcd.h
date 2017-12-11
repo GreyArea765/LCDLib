@@ -19,8 +19,8 @@
 #define RW_PORT PORTDbits.RD6
 #define EN_PORT PORTDbits.RD7
 
-#define DATA_LAT LATD
-#define DATA_PORT PORTD
+#define DATA_LAT LATB
+#define DATA_PORT PORTB
 
 void LCDInit(void);
 //void LCDSendChar(char *a);

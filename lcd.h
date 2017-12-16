@@ -29,8 +29,12 @@ void LCDInit(void);
 void LCDCmd8Bit(unsigned char);
 // Used once in 4 bit mode.
 void LCDCmd(unsigned char);
-
+// Send a single character.
 void LCDChar(unsigned char *);
+// Send a NULL-terminated string.
+void LCDSendString(char *);
+// Start of some defined commands.
+void LCDCmdClear(void);
 
 
 #endif	/* LCD_H */

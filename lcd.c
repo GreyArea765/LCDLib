@@ -141,3 +141,18 @@ void LCDChar(unsigned char *chr)
 	__delay_us(200);
 #endif
 }
+
+// Expects a null terminated string.
+void LCDSendString(char *str)
+{
+    while (*str != '\0')
+    {
+        LCDChar(str);
+        str++;
+    }
+}
+
+void LCDCmdClear(void)
+{
+    LCDCmd(0x01);
+}

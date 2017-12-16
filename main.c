@@ -69,8 +69,16 @@ void main(void)
     LCDInit();
     
     __delay_ms(5);
-    LCDChar("X");
     
+    LCDSendString("Hello, world!");
+    
+    __delay_ms(1000);
+    
+    LCDCmdClear();
+    __delay_ms(5);
+    LCDSendString("It's me again!");
+    
+    // This while loop just flashes a LED to show the PIC is running.
     while (1)
     {
         LATA = 0xFF;

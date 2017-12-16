@@ -112,8 +112,9 @@ void LCDCmd (unsigned char cmd)
 #endif
     EN_LAT = 0;
  
+// Waiting for a while to ensure busy flag clears.
 #ifndef DEBUG
-	__delay_us(200);
+	__delay_ms(5);
 #endif
 }
 
@@ -140,8 +141,9 @@ void LCDChar(unsigned char *chr)
 #endif
     EN_LAT = 0;
  
+    // Waiting for a while to ensure busy flag clears.
 #ifndef DEBUG
-	__delay_us(200);
+	__delay_ms(5);
 #endif
 }
 
@@ -158,4 +160,24 @@ void LCDSendString(char *str)
 void LCDCmdClear(void)
 {
     LCDCmd(0x01);
+}
+
+// Set the cursor at X,Y coordinates.
+LCDGotoXY(unsigned int x, unsigned int y)
+{
+    if(x>=20) return;
+    
+    // In a 2-line display mode the DDRAM address for line 1 is:
+    // 0x00 - 0x27 and for line two it's 0x40 - 0x67
+    switch(y)
+    {
+            case 0:
+                break;
+            case 1:
+                x+=0x40;      // The second line starts at address => 0x40
+    }
+    
+    // The command for set DDRAM address is 0b10000000 so OR it with data.
+    x|=0b10000000;
+    LCDCmd(x);
 }

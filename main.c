@@ -75,8 +75,10 @@ void main(void)
     __delay_ms(1000);
     
     LCDCmdClear();
-    __delay_ms(5);
-    LCDSendString("Are we having fun yet?");
+
+    LCDSendString("Are we having");
+    LCDGotoXY(0,1);
+    LCDSendString("fun yet?");
     
     // This while loop just flashes a LED to show the PIC is running.
     while (1)

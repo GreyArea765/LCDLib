@@ -35,6 +35,8 @@ void LCDChar(unsigned char *);
 void LCDSendString(char *);
 // Start of some defined commands.
 void LCDCmdClear(void);
+// Place cursor at X,Y coordinates.
+LCDGotoXY(unsigned int x, unsigned int y);
 
 
 #endif	/* LCD_H */

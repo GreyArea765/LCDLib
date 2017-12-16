@@ -10,4 +10,4 @@ My attempt at getting the PIC16F18877 to initialize a Hitachi compatible
 
 ## To-do:
 
-o Add function to wait for BUSY flag to be cleared.
+* Add function to wait for BUSY flag to be cleared.

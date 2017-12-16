@@ -70,7 +70,8 @@ void LCDInit(void)
 
 void LCDCmd8Bit(unsigned char cmd)
 {
-    RS_LAT = 0;
+    RW_LAT = 0;                         // 0 is Write.
+    RS_LAT = 0;                         // 0 Select instruction register
     
     // Push data to the latch.
     DATA_LAT = cmd;
@@ -90,7 +91,8 @@ void LCDCmd8Bit(unsigned char cmd)
 
 void LCDCmd (unsigned char cmd)
 { 
-    RS_LAT = 0;
+    RW_LAT = 0;                         // 0 is Write.
+    RS_LAT = 0;                         // 0 Select instruction register
     
     // Set upper nibble.
 	DATA_LAT = ((cmd >> 4) & 0x0F);
@@ -117,7 +119,8 @@ void LCDCmd (unsigned char cmd)
 
 void LCDChar(unsigned char *chr)
 {
-    RS_LAT = 1;
+    RW_LAT = 0;                         // 0 is Write.
+    RS_LAT = 1;                         // 0 Select data register.
     
     // Set upper nibble.
 	DATA_LAT = ((*chr >> 4) & 0x0F);

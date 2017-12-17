@@ -140,7 +140,7 @@ void LCDChar(unsigned char *chr)
     __delay_us(5);
 #endif
     EN_LAT = 0;
- 
+
     // Waiting for a while to ensure busy flag clears.
 #ifndef DEBUG
 	__delay_ms(5);
@@ -157,13 +157,13 @@ void LCDSendString(char *str)
     }
 }
 
-void LCDCmdClear(void)
+void LCDClear(void)
 {
     LCDCmd(0x01);
 }
 
 // Set the cursor at X,Y coordinates.
-LCDGotoXY(unsigned int x, unsigned int y)
+void LCDGotoXY(unsigned int x, unsigned int y)
 {
     if(x>=20) return;
     
@@ -180,4 +180,33 @@ LCDGotoXY(unsigned int x, unsigned int y)
     // The command for set DDRAM address is 0b10000000 so OR it with data.
     x|=0b10000000;
     LCDCmd(x);
+}
+
+void LCDHome(void)
+{
+    LCDCmd(0x02);
+}
+
+// LCDScrollLeft uses the display shift function described here:
+//
+// DB4 DB3 DB2 DB1 DB0
+//  1  S/C R/L  -   -
+//
+// S/C R/L Description
+//  L  L   Shift cursor to the left
+//  L  H   Shift cursor to the right/
+//  H  L   Shift display to the left, cursor follows the display shift.
+//  H  H   Shift display to the right, cursor follows the display shift.
+//
+void LCDScrollLeft(void)
+{
+    // 0b11000 = 0x18
+    LCDCmd(0x18);
+}
+
+// See description for LCDScrollLeft
+void LCDScrollRight(void)
+{
+    // 0b1110 = 0x1C
+    LCDCmd(0x1C);
 }

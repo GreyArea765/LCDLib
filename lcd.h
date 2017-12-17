@@ -34,9 +34,15 @@ void LCDChar(unsigned char *);
 // Send a NULL-terminated string.
 void LCDSendString(char *);
 // Start of some defined commands.
-void LCDCmdClear(void);
+void LCDClear(void);
 // Place cursor at X,Y coordinates.
-LCDGotoXY(unsigned int x, unsigned int y);
+void LCDGotoXY(unsigned int x, unsigned int y);
+// Set cursor at 0.0 position.
+void LCDHome(void);
+// Shift display left, for scrolling.
+void LCDScrollLeft(void);
+// Shift display left, for scrolling.
+void LCDScrollRight(void);
 
 
 #endif	/* LCD_H */

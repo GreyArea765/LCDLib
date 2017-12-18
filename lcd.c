@@ -118,7 +118,7 @@ void LCDCmd (unsigned char cmd)
 #endif
 }
 
-void LCDChar(unsigned char *chr)
+void LCDChar(const unsigned char *chr)
 {
     RW_LAT = 0;                         // 0 is Write.
     RS_LAT = 1;                         // 0 Select data register.
@@ -148,7 +148,7 @@ void LCDChar(unsigned char *chr)
 }
 
 // Expects a null terminated string.
-void LCDSendString(char *str)
+void LCDSendString(const unsigned char *str)
 {
     while (*str != '\0')
     {

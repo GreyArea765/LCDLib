@@ -30,9 +30,9 @@ void LCDCmd8Bit(unsigned char);
 // Used once in 4 bit mode.
 void LCDCmd(unsigned char);
 // Send a single character.
-void LCDChar(unsigned char *);
+void LCDChar(const unsigned char *);
 // Send a NULL-terminated string.
-void LCDSendString(char *);
+void LCDSendString(const unsigned char *);
 // Start of some defined commands.
 void LCDClear(void);
 // Place cursor at X,Y coordinates.

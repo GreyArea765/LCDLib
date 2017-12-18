@@ -50,9 +50,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define _XTAL_FREQ  32000000
-//#define _XTAL_FREQ  000000
-
+#define _XTAL_FREQ  1000000      // This should be 1Mhz!!!
 
 
 /**
